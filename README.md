@@ -51,35 +51,49 @@ def producto(m1, m2):
 
 #  3. Desarrolle un programa que permita obtener la matriz transpuesta de una matriz ingresada:
 ```
-def obtener_transpuesta(matriz):
-    if not matriz:
-        return None
+#Para imprimir una matriz
+def matriz(matriz):
+  for fila in matriz:
+    for elemento in fila:
+      print(elemento, end="\t")
+        #genera el salto entre filas   
+    print()  
 
-    filas = len(matriz)
-    columnas = len(matriz[0])
+#funcion para obtener la matriza transpuesta
+def transpuesta(matriz):
+  #verifica si la matriz esta vacia
+  if not matriz:
+    return []
+  #Para el numero de filas y columnas
+  filas = len(matriz)
+  columnas = len(matriz[0])
+  #inicia una matriz vacia para ivertir las dimenciones
+  transpuesta = [[0] * filas for _ in range(columnas)]
+  #transpone a la matriz ingresada
+  for i in range(filas):
+    for j in range(columnas):
+            #intercambia las posisciones
+            transpuesta[j][i] = matriz[i][j]
 
-    transpuesta = [[matriz[j][i] for j in range(filas)] for i in range(columnas)]
-    return transpuesta
+  return transpuesta
+#pedimos la cantidad de filas, nosotros definimos las columnas
+filas = int(input("Ingrese el número de filas de la matriz: "))
 
-# Ejemplo de uso
-matriz_ejemplo = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+#una matriz vacía
+m = []
 
-matriz_transpuesta = obtener_transpuesta(matriz_ejemplo)
+print("Ingrese los elementos de la matriz fila por fila: ")
+for i in range(filas):
+  fila = input(f"Ingrese los elementos de la fila {i + 1} separados por espacios: ").split()
+  fila = [int(elemento) for elemento in fila]
+  m.append(fila)
 
-if matriz_transpuesta:
-    print("Matriz original:")
-    for fila in matriz_ejemplo:
-        print(fila)
+# Se imprime la matriz 
+resultante = transpuesta(m)
+for fila in resultante:
+  print(fila)
 
-    print("\nMatriz transpuesta:")
-    for fila in matriz_transpuesta:
-        print(fila)
-else:
-    print("La matriz está vacía. No se puede obtener la transpuesta.")
+
 
 ```
 #  4 . Desarrollar un programa que sume los elementos de una columna dada de una matriz:
