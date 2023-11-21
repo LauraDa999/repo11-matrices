@@ -98,27 +98,33 @@ for fila in resultante:
 ```
 #  4 . Desarrollar un programa que sume los elementos de una columna dada de una matriz:
 ```
-def sum_column(matrix, column_index):
-    if not matrix:
-        return None
-    if column_index < 0 or column_index >= len(matrix[0]):
-        return None
+#función para sumar los elementos de la misma posición en cada fila
+def suma_columna(matriz, columna):
+  suma = 0
+  for fila in matriz:
+    #verifica si la columna seleccionada para su respectiva fila.
+    if columna < len(fila):
+      suma += fila[columna]
+    return suma
 
-    return sum(row[column_index] for row in matrix)
+#Se ingresa el número de filas y columnas
+filas = int(input("Ingrese el número de filas de la matriz: "))
+columnas = int(input("Ingrese el número de columnas de la matriz: "))
 
-# Ejemplo de uso
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-column_index = 1  # Índice de la columna que quieres sumar
+#Se ingresa los valores la matriz fila por fila
+matriz = []
+for i in range(filas):
+  fila = input(f"Ingrese los elementos de la fila {i + 1} separados por espacios: ").split()
+  fila = [int(x) for x in fila]
+  matriz.append(fila)
 
-result = sum_column(matrix, column_index)
-if result is not None:
-    print(f"La suma de los elementos de la columna {column_index} es: {result}")
-else:
-    print("La matriz está vacía o el índice de columna está fuera de rango.")
+#se pide la columna que se desea sumar
+columna_a_sumar = int(input(f"Ingrese el número de la columna que desea sumar (0 - {columnas - 1}): "))
+
+#resultado
+resultado = suma_columna(matriz, columna_a_sumar)
+print(f"La suma de la columna {columna_a_sumar} es: {resultado}")
+ 
 ```
 
 # 5. Desarrollar un programa que sume los elementos de una fila dada de una matriz:
