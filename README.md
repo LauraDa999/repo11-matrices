@@ -21,20 +21,32 @@ if suma and resta:
 ```
 #  2. Desarrolle un programa que permita realizar el producto de matrices:
 ```
- print("No se pueden multiplicar las matrices dadas. Revise las dimensiones.")
+#funcion para validar que ambas matrices tienen el mismo tamañaño
+def validar(m1, m2):
+  num_columnas_m1 = len(m1[0])
+  num_filas_m2 = len(m2)
 
-# Ejemplo de uso 2
-C = [[2, 4], [1, 3], [5, 6]]
-D = [[3, 2], [1, 7]]
+  return num_columnas_m1 == num_filas_m2
 
-resultado2 = producto_de_matrices(C, D)
+ 
+#función para multiplicar matrices
+def producto(m1, m2):
+  if validar(m1, m2):
+    resultado = []
 
-if resultado2:
-    print("\nProducto de matrices 2:")
-    for fila in resultado2:
-        print(fila)
-else:
-    print("No se pueden multiplicar las matrices dadas. Revise las dimensiones.")
+    for i in range(len(m1)):
+      fila = []
+      #recorremos las columnas de la segunda matriz.
+      for j in range(len(m2[0])):
+        punto = 0
+        #ahora las columnas 
+        for k in range(len(m2)):
+          #operamos y añadimos a la fila el resultado para luego añadirlo a la respuesta
+          punto += m1[i][k] * m2[k][j]
+        fila.append(punto)
+      resultado.append(fila)
+    return resultado
+  
 ```
 
 #  3. Desarrolle un programa que permita obtener la matriz transpuesta de una matriz ingresada:
