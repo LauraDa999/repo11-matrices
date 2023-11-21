@@ -129,28 +129,46 @@ print(f"La suma de la columna {columna_a_sumar} es: {resultado}")
 
 # 5. Desarrollar un programa que sume los elementos de una fila dada de una matriz:
 ```
-def sum_row(matrix, row_index):
-    if not matrix:
-        return None
-    if row_index < 0 or row_index >= len(matrix):
-        return None
+def CrearMatriz(matriz):# Para que el usuario cree la matriz
+  fila=[]
+  filas=int(input("Ingrese el número de filas: "))  # Ingresar el número de filas que quiere
+  columnas=int(input("Ingrese el número de columnas: ")) # Ingresar el número de columnas que quiere
+  print("--------------------------------------------")
+   # Para ir creando cada fila
+  for i in range(filas):                                                     
+    for j in range(columnas):                      
+ # Para añadir los valores de la fila (cada columna)
+      valor=int(input("Ingrese el valor de la fila " + str(i) + ": "))
+      fila.append(valor)                                                     
+# Se añade el valor a la fila
+    matriz.append(fila)                                                      
+# Se añade la fila terminada a la matriz
+    fila=[]                                                                 
+ # Se deja vacía la fila para seguir con las demás
+  print("--------------------------------------------")
+  for k in range(len(matriz)):                                               
+# Para imprimir la matriz con forma de matriz ;)
+    print(matriz[k])
 
-    return sum(matrix[row_index])
+def SumaFila(matriz):                                                      
+ # Para la suma de las filas
+  suma=0
+  print("--------------------------------------------")
+  for i in matriz:                                                           
+# Selecciona la fila de la matriz
+    for j in i:                                                              
+# Selecciona cada elemento de esa fila
+      suma+=j                                                                
+# Suma los elementos
+    print("La suma de la fila " + str(i) + " es: " + str(suma))
+    suma=0
 
-# Ejemplo de uso
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-row_index = 1  # Índice de la fila que quieres sumar
+if __name__ == "__main__":
+  matriz=[]                                                                 
+# Se crea la matriz vacía
+  CrearMatriz(matriz)                                                       
+# Se llama la función para crear la matriz
+  SumaFila(matriz)                                                         
 
-result = sum_row(matrix, row_index)
-if result is not None:
-    print(f"La suma de los elementos de la fila {row_index} es: {result}")
-else:
-    print("La matriz está vacía o el índice de fila está fuera de rango.")
 
 ```
-
-#
